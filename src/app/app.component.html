@@ -1,3 +1,14 @@
+<h1>ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'Carlos'">Es el papá Carlos</p>
+  <p *ngSwitchCase="'Emily'">Es la mamá Emily</p>
+  <p *ngSwitchCase="'Mooncake'">Es la gata Mooncake</p>
+  <p *ngSwitchCase="'Yuri'">Es el cane di pepino Yuri</p>
+  <p *ngSwitchCase="'Sparky'">Es el cane di Sicilia Sparky</p>
+  <p *ngSwitchDefault>No forma parte de la familia.</p>
+</div>
+
 <h1>ngFor en array de objetos</h1>
 <div>
   <div *ngFor="let product of products">
@@ -6,8 +17,6 @@
     <p><b>{{product.price}}</b></p>
   </div>
 </div>
-
-
 
 <h1>ngFor</h1>
 <h3>Emojis</h3>
