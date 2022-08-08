@@ -1,3 +1,14 @@
+<h1>ngFor en array de objetos</h1>
+<div>
+  <div *ngFor="let product of products">
+    <img [src]="product.image" [alt]='"Image for " + product.name'>
+    <h2>{{product.name}}</h2>
+    <p><b>{{product.price}}</b></p>
+  </div>
+</div>
+
+
+
 <h1>ngFor</h1>
 <h3>Emojis</h3>
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from './product.model';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,35 @@ export class AppComponent {
   }
   emojis: string[] = [ '😂' , '🐦', '🐳','🌮', '💚'];
   newName: string = '';
+
+  products: Product[] = [
+    {
+      name: 'Bicicleta',
+      price: 250,
+      image: '../assets/images/bike.jpeg'
+    },
+    {
+      name: 'Computadora',
+      price: 400,
+      image: '../assets/images/computer.jpeg'
+    },
+    {
+      name: 'Oso de peluche',
+      price: 60,
+      image: '../assets/images/teddy.jpeg'
+    },
+    {
+      name: 'Mini nevera',
+      price: 165,
+      image: '../assets/images/minibar.jpeg',
+      category: 'kitchen'
+    },
+    {
+      name: 'Sombrero',
+      price: 46,
+      image: '../assets/images/hat.jpeg'
+    }
+  ];
 
   toggleButton() {
     this.btnDisabled = !this.btnDisabled;
