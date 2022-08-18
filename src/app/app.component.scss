@@ -4,3 +4,52 @@
   overflow: auto;
   background: rebeccapurple;
 }
+
+.products--grid {
+  display: flex;
+  flex-flow: column wrap;
+  div {
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    h2, p {
+      margin: 0;
+    }
+  }
+}
+
+.message-error {
+  opacity: 0;
+  transition: all linear .5s;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  &.invalid {
+    opacity: 1;
+  }
+}
+
+.dynamic-width {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.line-error {
+  height: 0;
+  border-bottom: 1px solid;
+  &.valid {
+    border-color: green;
+  }
+  &.invalid {
+    border-color: red;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .products--grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+  }
+}

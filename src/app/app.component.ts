@@ -7,15 +7,37 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  // Formulario
+  register = {
+    name: '',
+    email: '',
+    password: '',
+  }
+
+  // Estilos
+  widthImg = 10;
+
+  box = {
+    width: 100,
+    height: 100,
+    background: 'red',
+  }
+
+  // String interpolation
   name = 'Carlos';
   age = 31;
   img = 'https://source.unsplash.com/random';
+
+  // Property binding
+
   btnDisabled = true;
   person = {
     name: 'Carlos',
+    surname: null,
     age: 31,
     avatar: 'https://source.unsplash.com/random',
   }
+
   emojis: string[] = [ '😂' , '🐦', '🐳','🌮', '💚'];
   newName: string = '';
 
@@ -79,6 +101,10 @@ export class AppComponent {
 
   quitarElemento(index: number) {
     this.emojis.splice(index, 1);
+  }
+
+  onRegister() {
+    console.log(this.register);
   }
 }
 

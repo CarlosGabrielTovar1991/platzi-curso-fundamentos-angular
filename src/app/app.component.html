@@ -1,3 +1,78 @@
+<h1>Formulario</h1>
+<form #registerForm="ngForm" (ngSubmit)="onRegister()">
+  <div class="input-group">
+    <label for="name">Nombre de usuario</label>
+    <input type="text" name="name" id="name" required #registerName="ngModel" [(ngModel)]="register.name" />
+    <p class="message-error">Mensaje de error</p>
+  </div>
+  <div class="input-group">
+    <label for="email">Correo electrónico</label>
+    <input type="email" name="email" id="email" required #registerEmail="ngModel" [(ngModel)]="register.email" />
+    <p class="message-error">Mensaje de error</p>
+  </div>
+  <div class="input-group">
+    <label for="name">Contraseña</label>
+    <input type="password" name="password" id="password" required #registerPassword="ngModel" [(ngModel)]="register.password" />
+    <p class="message-error">Mensaje de error</p>
+  </div>
+  <button type="submit" [disabled]="registerForm.invalid">Registrarse</button>
+</form>
+<hr/>
+
+
+<h1>ngClass & ngStyle</h1>
+
+<label>Nombre</label>
+<input type="text" required #nameInputClass="ngModel" [(ngModel)]="person.name" />
+<hr class="line-error" [ngClass]="{ 'valid': nameInputClass.valid, 'invalid': nameInputClass.invalid }" />
+<p class="message-error" [class.invalid]="nameInputClass.invalid">El campo es requerido</p>
+
+<div class="dynamic-width">
+  <div>
+    <div><input type="number" [(ngModel)]="box.width" /></div>
+    <div><input type="number" [(ngModel)]="box.height" /></div>
+    <div><input type="color" [(ngModel)]="box.background" /></div>
+  </div>
+  <div>
+    <div [ngStyle]="{
+      'width.px': box.width,
+      'height.px': box.height,
+      'background-color': box.background,
+      'display': 'block'
+    }"></div>
+  </div>
+</div>
+
+<hr />
+
+<h1>Class & styles</h1>
+<label>Nombre</label>
+<input type="text" required #nameInputTwo="ngModel" [(ngModel)]="person.name" />
+<p class="message-error" [class.invalid]="nameInputTwo.invalid">
+  El campo es requerido
+</p>
+
+<label>Apellido</label>
+<input type="text" required #nameInputSurname="ngModel" [(ngModel)]="person.surname" />
+<p
+  [style.color]="nameInputSurname.invalid ? 'red' : 'black'"
+  [style.font-style]="nameInputSurname.invalid ? 'italic' : 'normal'"
+  [style.font-size.em]="nameInputSurname.invalid ? 2 : 1"
+>
+  Si estoy en cursiva, color rojo y dimensión grande, el campo apellido es inválido
+</p>
+
+<div class="dynamic-width">
+  <div>
+    <input type="text" [(ngModel)]="widthImg"/>
+  </div>
+  <div>
+    <img src={{img}} alt="Random image from internet." [style.width.px]="widthImg">
+  </div>
+</div>
+
+<hr/>
+
 <h1>ngSwitch</h1>
 <input type="text" required [(ngModel)]="person.name" />
 <div [ngSwitch]="person.name">
@@ -9,14 +84,18 @@
   <p *ngSwitchDefault>No forma parte de la familia.</p>
 </div>
 
+<hr/>
+
 <h1>ngFor en array de objetos</h1>
-<div>
+<div class="products--grid">
   <div *ngFor="let product of products">
     <img [src]="product.image" [alt]='"Image for " + product.name'>
+    <p><b>${{product.price}}</b></p>
     <h2>{{product.name}}</h2>
-    <p><b>{{product.price}}</b></p>
   </div>
 </div>
+
+<hr/>
 
 <h1>ngFor</h1>
 <h3>Emojis</h3>
@@ -37,14 +116,19 @@
 
 <hr>
 
-<h1>ngIf</h1>
+<h1>ngIf con caso else</h1>
 
 <input type="text" required [(ngModel)]="person.name" />
-<p *ngIf="person.name == 'Jesus'; else elseBlock">OMG! It's Jesus</p>
-
+<p *ngIf="person.name === 'Carlos'; else elseBlock">You are Carlos</p>
 <ng-template #elseBlock>
-  <p>You are not our savior!</p>
+  <p>You are not Carlos!</p>
 </ng-template>
+
+<h1>ngIf</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<p *ngIf="person.name === 'Carlos'">You are Carlos</p>
+
+<hr/>
 
 <h1>ngModel</h1>
 
@@ -60,7 +144,9 @@
 
 <h1>Eventos</h1>
 <button [disabled]="btnDisabled">Enviar</button>
-<button (click)="toggleButton()">Toggle button</button>
+<button (click)="toggleButton()">
+  {{btnDisabled ? 'Activar' : 'Desactivar'}} botón
+</button>
 <p>Edad {{person.age}}</p>
 <button (click)="increaseAge()">Age ++</button>
 <button (click)="decreaseAge()">Age --</button>
@@ -84,4 +170,4 @@
 <h1>{{ 'Hola mundo '.repeat(5) }}</h1>
 <p>3 + 3 = {{ 3 + 3 }}</p>
 <h3>Hola, soy {{ name }} y tengo {{ age }}</h3>
-<img src={{img}} alt="Random image from internet.">
+<img src={{img}} alt="Random image from internet." width="100">
